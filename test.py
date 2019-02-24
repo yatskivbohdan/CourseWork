@@ -13,6 +13,6 @@ for player in scorers['scorers']:
           str(player['numberOfGoals']))
 connection.request('GET', '/v2/competitions/PL/matches', None, headers)
 matches = json.loads(connection.getresponse().read().decode())
-with open("F:/Programming/Labs/CourseWork/results.json", 'w', encoding = 'utf-8') as results:
+with open("results.json", 'w', encoding = 'utf-8') as results:
     for match in matches['matches']:
         json.dump(match, results)
