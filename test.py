@@ -2,10 +2,12 @@ import hidden
 import http.client
 import json
 
-
+#Creating connection 
 connection = http.client.HTTPConnection('api.football-data.org')
 headers = {'X-Auth-Token': hidden.token, 'X-Response-Control': 'minified'}
+#Making request
 connection.request('GET', '/v2/competitions/PL/scorers', None, headers)
+#Loading request into json file
 scorers = json.loads(connection.getresponse().read().decode())
 for player in scorers['scorers']:
     print(player['player']['name'] + " "*(26-len(player['player']['name'])) +
