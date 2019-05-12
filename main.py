@@ -109,10 +109,10 @@ Please enter a command:
             print("Welcome to the Football Data Analysis app")
             print("Please choose a league:")
             self.choose_league()
-        try:
-            while True:
-                print("\n")
-                print("""
+        
+        while True:
+            print("\n")
+            print("""
 Please enter a command:
 
 \tget standings ---Get league standings
@@ -122,13 +122,13 @@ Please enter a command:
 \tchoose another league---Choose another league
 \tquit---Quit the program
 """)
-                answer = input("Enter a command: ").lower()
-                try:
-                    func = self.menu_map[answer]
-                except KeyError:
-                    print("{} is not a valid command".format(answer))
-                else:
-                    func()
+            answer = input("Enter a command: ").lower()
+            try:
+                func = self.menu_map[answer]
+            except KeyError:
+                print("{} is not a valid command".format(answer))
+            else:
+                func()
            
         
 menu = Menu()
