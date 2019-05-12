@@ -1,6 +1,5 @@
-import json
-
 class MatchList(list):
+
     def get_matchday(self, num):
         matchday = []
         for el in self:
@@ -49,20 +48,23 @@ class MatchList(list):
                     draws += 1
                 else:
                     wins += 1
-        return (wins, draws, loses)
+        games = wins + draws + loses
+        return (games, wins, draws, loses)
 
     def get_goals(self, team_name):
         scored = 0
         missed = 0
         for el in self.get_home_matches(team_name):
             if el[0] == "FINISHED":
-                scored += el[4]['homeTeam']
+                scored += el[4]['homeTeam'] 
                 missed += el[4]['awayTeam']
         for el in self.get_away_matches(team_name):
             if el[0] == "FINISHED":
                 scored += el[4]['awayTeam']
                 missed += el[4]['homeTeam']
         return(scored, missed)
+
+
 
 
 
