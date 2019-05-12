@@ -50,4 +50,7 @@ class TestMatchList(TestCase):
         self.assertEqual(liverpool_goals, results.liverpool_goals)
         self.assertEqual(barcelona_goals, results.barcelona_goals)
 
+if __name__ == "__main__":
+    unittest.main()
+
 
