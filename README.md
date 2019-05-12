@@ -33,4 +33,19 @@ The output is statistics data.
       - get_stats
       - compare
    
-* updater.py = module that updates .json files with all necessary data   
+* updater.py - module that updates .json files with all necessary data
+
+## Usage
+1.Run main.py module and choose a league from the list(example Premier League)
+2.You will recieve menu with following commands:
+* get standings - league table
+* get scorers - list of league top 10 scorers
+* get matchday - all matches of chosen matchday 
+* choose a team 
+* choose another league
+* quit
+3. If you enter "choose a team" command you will recieve following team menu:
+* get stats - team statisctics
+* compare - compare two teams statistics
+* back - return to previous menu 
+
