@@ -1,7 +1,7 @@
 import json
 from adt import MatchList
 
-with open("data/PLmatches.json", 'r') as file:
+with open("PLmatches.json", 'r') as file:
     matches_js = json.load(file)
 lst = matches_js['matches']
 matches = MatchList()
