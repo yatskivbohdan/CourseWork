@@ -101,6 +101,7 @@ Please enter a command:
         team.print_head_to_head(another_team)
 
     def quit(self):
+        print("Thank you for using our program!")
         raise SystemExit
 
     def menu(self):
@@ -128,10 +129,8 @@ Please enter a command:
                     print("{} is not a valid command".format(answer))
                 else:
                     func()
-        finally:
-            print("Thank you for using our program!")
-
-
+           
+        
 menu = Menu()
 menu.menu()
 
