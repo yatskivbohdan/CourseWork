@@ -36,7 +36,8 @@ The output is statistics data.
 * updater.py - module that updates .json files with all necessary data
 
 ## Usage
-1.Run main.py module and choose a league from the list(example Premier League)
+1.Run main.py module and choose a league from the list(example: Premier League)
+
 2.You will recieve menu with following commands:
 * get standings - league table
 * get scorers - list of league top 10 scorers
