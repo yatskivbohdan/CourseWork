@@ -5,7 +5,7 @@ from ADT.adt import MatchList
 class League:
     """Represents a league class"""
     def __init__(self, code):
-        self._code = code
+        self.code = code
         self._standings = self.__get_standings()
         self.matches = self.__get_matches()
         self.teams = self.__get_teams()
@@ -18,7 +18,7 @@ class League:
         :return: dict
         """
         teams = {}
-        with open("data/" + self._code + "teams.json", "r", encoding="utf-8") as file:
+        with open("data/" + self.code + "teams.json", "r", encoding="utf-8") as file:
             teams_js = json.load(file)
         self.matchday = teams_js['season']['currentMatchday'] - 1
         for team in teams_js['teams']:
@@ -31,7 +31,7 @@ class League:
         :return: dict
         """
         standings = {}
-        with open("data/" + self._code + "standings.json", "r", encoding="utf-8") as file:
+        with open("data/" + self.code + "standings.json", "r", encoding="utf-8") as file:
             standings_js = json.load(file)
         for team in standings_js['standings'][0]['table']:
             standings[team['team']['name']] = team['position']
@@ -42,7 +42,7 @@ class League:
         Prints the standings
         :return: None
         """
-        with open("data/" + self._code + "standings.json", "r", encoding="utf-8") as file:
+        with open("data/" + self.code + "standings.json", "r", encoding="utf-8") as file:
             standings_js = json.load(file)
         print("Premier League")
         print("№ " + "Name" + (24*" ") + "G  W  D  L  GF  GA  GD   P")
@@ -61,7 +61,7 @@ class League:
         Prints a list of top 10 scorers of the league
         :return: None
         """
-        with open("data/" + self._code + "scorers.json", "r", encoding="utf-8") as file:
+        with open("data/" + self.code + "scorers.json", "r", encoding="utf-8") as file:
             scorers = json.load(file)
         print("Top Scorers:")
         num = 1
@@ -77,7 +77,7 @@ class League:
         Returns all league matches
         :return: MatchList object
         """
-        with open("data/" + self._code + "matches.json", "r", encoding="utf-8") as file:
+        with open("data/" + self.code + "matches.json", "r", encoding="utf-8") as file:
             matches_js = json.load(file)
         lst = matches_js['matches']
         matches = MatchList()
