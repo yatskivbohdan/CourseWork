@@ -1,5 +1,5 @@
 import json
-from adt import MatchList
+from ADT.adt import MatchList
 
 
 class League:
