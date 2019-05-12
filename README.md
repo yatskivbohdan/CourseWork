@@ -45,6 +45,7 @@ The output is statistics data.
 * choose a team 
 * choose another league
 * quit
+
 3. If you enter "choose a team" command you will recieve following team menu:
 * get stats - team statisctics
 * compare - compare two teams statistics
