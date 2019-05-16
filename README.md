@@ -109,7 +109,23 @@ Standings example:
     18 Cardiff City FC            37  9  4 24  32  69 -37  31
     19 Fulham FC                  37  7  5 25  34  77 -43  26
     20 Huddersfield Town AFC      37  3  6 28  21  75 -54  15
-    
- 
+
+Two teams comparison example:
+
+                    FC Barcelona                    Real Madrid CF
+                            1       position        3
+    25(69.4%)-8(22.2%)-3(8.3%)      stat            21(58.3%)-5(13.9%)-10(27.8%)
+    14(77.8%)-3(16.7%)-1(5.6%)      home stat       13(72.2%)-1(5.6%)-4(22.2%)
+    11(61.1%)-5(27.8%)-2(11.1%)     away stat       8(44.4%)-4(22.2%)-6(33.3%)
+                            86      goals scored    62
+                            34      goals missed    41
+                            2.39    avg scored      1.72
+                            0.94    avg missed      1.14
+    Please enter a command:
+
+            get stats---Get detailed team statistics
+            compare---Compare two teams head to head
+            back---Go back to previous page                        
+                        
 
 #### This page could be changed, as project is still in development.
