@@ -44,7 +44,7 @@ class League:
         """
         with open("data/" + self.code + "standings.json", "r", encoding="utf-8") as file:
             standings_js = json.load(file)
-        print("Premier League")
+        print(standings_js['competition']['name'])
         print("№ " + "Name" + (24*" ") + "G  W  D  L  GF  GA  GD   P")
         for team in standings_js['standings'][0]['table']:
             print((2-len(str(team['position'])))*" " + str(team['position']) + " " + team['team']['name'] +
@@ -163,7 +163,11 @@ class Team:
         self._away_goals_avg_scored = round(self._away_goals[0] / (self._away_stat[0]), 2)
         self._away_goals_avg_missed = round(self._away_goals[1] / (self._away_stat[0]), 2)
         self._top6_stat = self.against_top_6()
-
+        return {"stat": self._stat, "percentage": self._stat_percentage, "goals": self._goals,
+                "home_stat": self._home_stat, "home_percentage": self._home_stat_percentage,
+                "away_stat": self._away_stat, "away_percentage": self._away_stat_percentage,
+                "avg_scored": self._avg_goals_scored, "avg_missed": self._avg_goals_missed
+                }
     def get_form(self, num):
         """
         Returns a MatchList class object that contains last number(num) of matches
@@ -242,6 +246,28 @@ FORM(Last 5 games):
         matches = ""
         for match in head_to_head_matches:
             matches += "{} {}-{} {}".format(match[2], match[4]['homeTeam'], match[4]['awayTeam'], match[3]) + "\n"
-        self.print_info()
-        other_team.print_info()
+        other = other_team.get_stats()
+        print("""\t\t{}\t\t\t{}
+\t\t\t{}\tposition\t{}
+{}({}%)-{}({}%)-{}({}%)\tstat\t\t{}({}%)-{}({}%)-{}({}%)
+{}({}%)-{}({}%)-{}({}%)\thome stat\t{}({}%)-{}({}%)-{}({}%)\t
+{}({}%)-{}({}%)-{}({}%)\taway stat\t{}({}%)-{}({}%)-{}({}%)\t
+\t\t\t{}\tgoals scored\t{}
+\t\t\t{}\tgoals missed\t{}
+\t\t\t{}\tavg scored\t{}
+\t\t\t{}\tavg missed\t{}
+""".format(self.name, other_team.name, self.position, other_team.position,
+           self._stat[1], self._stat_percentage[0], self._stat[2], self._stat_percentage[1],
+           self._stat[3], self._stat_percentage[2], other['stat'][1], other['percentage'][0], other['stat'][2],
+           other['percentage'][1], other['stat'][3], other['percentage'][2],
+           self._home_stat[1], self._home_stat_percentage[0], self._home_stat[2], self._home_stat_percentage[1],
+           self._home_stat[3], self._home_stat_percentage[2], other['home_stat'][1],
+           other['home_percentage'][0], other['home_stat'][2], other['home_percentage'][1],
+           other['home_stat'][3], other['home_percentage'][2],
+           self._away_stat[1], self._away_stat_percentage[0], self._away_stat[2], self._away_stat_percentage[1],
+           self._away_stat[3], self._away_stat_percentage[2], other['away_stat'][1],
+           other['away_percentage'][0], other['away_stat'][2], other['away_percentage'][1],
+           other['away_stat'][3], other['away_percentage'][2],
+           self._goals[0], other['goals'][0], self._goals[1], other['goals'][1],
+           self._avg_goals_scored, other['avg_scored'], self._avg_goals_missed, other['avg_missed']))
         print("Previous matches:\n" + matches)
