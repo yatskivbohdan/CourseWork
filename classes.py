@@ -168,6 +168,7 @@ class Team:
                 "away_stat": self._away_stat, "away_percentage": self._away_stat_percentage,
                 "avg_scored": self._avg_goals_scored, "avg_missed": self._avg_goals_missed
                 }
+    
     def get_form(self, num):
         """
         Returns a MatchList class object that contains last number(num) of matches
@@ -179,7 +180,7 @@ class Team:
     def against_top_6(self):
         """
         Returns a MatchList class object with matches only against top 6 teams in league
-        :return: MatchList object
+        :return: MatchList object with all matches against top 6 teams
         """
         against_top6 = MatchList()
         for match in self._all_matches:
@@ -239,8 +240,8 @@ FORM(Last 5 games):
     def print_head_to_head(self, other_team):
         """
         Prints comparison of two teams and their previous games against each other
-        :param other_team:
-        :return:
+        :param other_team: name of team to compare with
+        :return: None
         """
         head_to_head_matches = self._all_matches.get_team_matches(other_team.name)
         matches = ""
