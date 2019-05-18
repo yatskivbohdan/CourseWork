@@ -2,6 +2,7 @@ from classes import League, Team
 
 
 class Menu():
+    """Class for navigating the program"""
     def __init__(self):
         self.menu_map = {
             "choose another league": self.choose_league,
@@ -14,6 +15,10 @@ class Menu():
         self._league = None
 
     def choose_league(self):
+        """
+        Initializes the league
+        :return: None
+        """
         print("\nEnter the league:\nPremier League(ENG)\nLa Liga(ESP)\nBundesliga(GER)\nSerie A(ITA)\nLigue 1(FRA)")
         leagues = {"Premier League":"PL", "La Liga": "PD", "Bundesliga": "BL1", "Serie A": "SA", "Ligue 1": "FL1"}
         league = input("enter league name:")
@@ -26,12 +31,24 @@ class Menu():
             self.choose_league()
 
     def get_standings(self):
+        """
+        Prints the standings of current league
+        :return: None
+        """
         self._league.print_standings()
 
     def get_scorers(self):
+        """
+        Prints top 10 scorers of current league
+        :return: None
+        """
         self._league.print_scorers()
 
     def get_matchday(self):
+        """
+        Prints matches of entered matchday
+        :return: None
+        """
         valid = False
         while not valid:
             num = int(input("Enter the matchday number:"))
@@ -48,6 +65,10 @@ class Menu():
         self._league.print_matchday(num)
 
     def choose_team(self):
+        """
+        Initializes a team from current league
+        :return: None
+        """
         self._league.print_standings()
         valid = False
         while not valid:
@@ -60,6 +81,11 @@ class Menu():
         self.team_menu(team)
 
     def team_menu(self, team):
+        """
+        A team menu that gives list of available commands to the user and runs chosen commands
+        :param team: team name
+        :return: None
+        """
         team_menu_map = {
             "get stats": self.get_stats,
             "compare": self.compare,
@@ -87,9 +113,19 @@ Please enter a command:
 
 
     def get_stats(self, team):
+        """
+        Prints the team statistics
+        :param team: team name
+        :return: None
+        """
         team.print_info()
 
     def compare(self, team):
+        """
+        Prints a comparison of two teams
+        :param team: other team name
+        :return: None
+        """
         valid = False
         while not valid:
             answer = input("Enter the name of team you want compare with:")
@@ -101,10 +137,18 @@ Please enter a command:
         team.print_head_to_head(another_team)
 
     def quit(self):
+        """
+        Quits the program
+        :return: None
+        """
         print("Thank you for using our program!")
         raise SystemExit
 
     def menu(self):
+        """
+        Menu that gives list of available commands to the user and runs chosen commands
+        :return: None
+        """
         if not self._league:
             print("Welcome to the Football Data Analysis app")
             print("Please choose a league:")
@@ -133,6 +177,3 @@ Please enter a command:
         
 menu = Menu()
 menu.menu()
-
-
-
