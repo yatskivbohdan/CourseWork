@@ -20,8 +20,4 @@ setup(
         "Topic :: Games/Entertainment"
         ],
     scripts=['main.py', 'updater.py']
-
-
-
-
 )
