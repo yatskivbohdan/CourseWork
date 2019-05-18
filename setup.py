@@ -19,7 +19,7 @@ setup(
         "Topic :: Software Development :: Libraries :: Python Modules",
         "Topic :: Games/Entertainment"
         ],
-    scripts=['main.py']
+    scripts=['main.py', 'updater.py']
 
 
 
