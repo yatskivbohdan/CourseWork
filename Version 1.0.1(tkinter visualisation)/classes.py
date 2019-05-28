@@ -40,8 +40,8 @@ class League:
 
     def print_standings(self):
         """
-        Prints the standings
-        :return: None
+        Returns the standings
+        :return: str
         """
         with open("data/" + self.code + "standings.json", "r", encoding="utf-8") as file:
             standings_js = json.load(file)
@@ -61,8 +61,8 @@ class League:
 
     def print_scorers(self):
         """
-        Prints a list of top 10 scorers of the league
-        :return: None
+        Returns top 10 scorers of the league
+        :return: str
         """
         with open("data/" + self.code + "scorers.json", "r", encoding="utf-8") as file:
             scorers = json.load(file)
@@ -93,9 +93,9 @@ class League:
 
     def print_matchday(self, num):
         """
-        Prints all matches of given matchday
+        Returns all matches of given matchday
         :param num: matchday number
-        :return: None
+        :return: str
         """
         matches = "MatchDay {}\n".format(num)
         for match in self.matches.get_matchday(num):
@@ -137,7 +137,8 @@ class Team:
     def get_stats(self):
         """
         Finds the stats and gives the values to the atributes
-        :return: None
+        Returns dict with main stats
+        :return: dict
         """
         self._all_matches = self.match_list.get_team_matches(self.name)
         self._stat = self.match_list.get_stats(self.name)
@@ -243,9 +244,9 @@ FORM(Last 5 games):
 
     def print_head_to_head(self, other_team):
         """
-        Prints comparison of two teams and their previous games against each other
+        Returns comparison of two teams and their previous games against each other
         :param other_team: name of team to compare with
-        :return: None
+        :return: str
         """
         if other_team == self:
             return "Choose another team!"
@@ -279,9 +280,3 @@ FORM(Last 5 games):
            self._avg_goals_scored, other['avg_scored'], self._avg_goals_missed, other['avg_missed'])
         result += "\nPrevious matches:\n" + matches
         return result
-
-
-a = League("PL")
-liv = a.teams['Liverpool FC']
-mc = a.teams['Manchester City FC']
-print(liv.print_head_to_head(mc))
